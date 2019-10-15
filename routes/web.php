@@ -22,6 +22,6 @@ Route::group(['prefix' => 'admin'], function () {
     });
 
     Route::group(['prefix' => 'users'], function () {
-        Route::get('index', 'UserController@index');
+        Route::get('index', 'UserController@index')->name('users.index');
     });
 });
