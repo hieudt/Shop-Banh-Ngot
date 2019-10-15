@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,6 +16,11 @@ class UserController extends Controller
     public function index()
     {
         return view('manage.users.index');
+    }
+
+    public function fetch()
+    {
+        return Datatables::of(User::all())->make(true);
     }
 
     /**

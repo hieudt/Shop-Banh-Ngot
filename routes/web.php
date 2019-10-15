@@ -23,5 +23,6 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('index', 'UserController@index')->name('users.index');
+        Route::get('fetch', 'UserController@fetch')->name('users.fetch');
     });
 });
