@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('index', function () {
+        return view('manage.home');
+    });
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('index', 'UserController@index');
+    });
+});
