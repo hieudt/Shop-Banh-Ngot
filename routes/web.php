@@ -25,4 +25,26 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('index', 'UserController@index')->name('users.index');
         Route::get('fetch', 'UserController@fetch')->name('users.fetch');
     });
+
+    Route::group(['prefix' => 'nguyenlieu'], function () {
+        Route::get('index', 'NguyenLieuController@index')->name('nguyenlieu.index');
+        Route::get('fetch', 'NguyenLieuController@fetch')->name('nguyenlieu.fetch');
+        Route::get('create', 'NguyenLieuController@create')->name('nguyenlieu.create');
+        Route::post('store', 'NguyenLieuController@store')->name('nguyenlieu.store');
+    });
+
+
+    Route::group(['prefix' => 'congthuc'], function () {
+        Route::get('index', 'CongThucController@index')->name('congthuc.index');
+        Route::get('fetch', 'CongThucController@fetch')->name('congthuc.fetch');
+        Route::get('create', 'CongThucController@create')->name('congthuc.create');
+        Route::post('store', 'CongThucController@store')->name('congthuc.store');
+    });
+
+    Route::group(['prefix' => 'sanpham'], function () {
+        Route::get('index', 'SanPhamController@index')->name('sanpham.index');
+        Route::get('fetch', 'SanPhamController@fetch')->name('sanpham.fetch');
+        Route::get('create', 'SanPhamController@create')->name('sanpham.create');
+        Route::post('store', 'SanPhamController@store')->name('sanpham.store');
+    });
 });
