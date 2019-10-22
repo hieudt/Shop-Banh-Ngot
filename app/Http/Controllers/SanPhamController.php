@@ -23,7 +23,7 @@ class SanPhamController extends Controller
     {
         return Datatables::of(SanPham::all())
         ->editColumn('image', function($data) {
-            return "<img src='".url($data->image)."'>";
+            return "<img width='80' height='80' src='".url($data->image)."'>";
         })
         ->addColumn('action', function ($data) {
             return '<button class="btn btn-primary" data-id="'.$data->id.'"><i class="fa fa-fw fa-edit"></i>Sửa </button>&nbsp<button class="btn btn-danger delete" data-id="'.$data->id.'"><i class="fa fa-fw fa-trash-o"></i>Xóa </button>';
@@ -53,7 +53,6 @@ class SanPhamController extends Controller
         $originalImage= $request->file('image');
         $thumbnailImage = Image::make($originalImage);
         $thumbnailPath = 'thumbnail/';
-        $thumbnailImage->resize(80,80);
         $nameImage = $thumbnailPath.time().$originalImage->getClientOriginalName();
         $thumbnailImage->save($nameImage); 
 

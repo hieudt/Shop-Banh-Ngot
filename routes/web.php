@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home.index');
-
+Route::get('/show/{id}', 'HomeController@fetchProduct')->name('home.showproduct');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('index', function () {
@@ -44,5 +44,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('fetch', 'SanPhamController@fetch')->name('sanpham.fetch');
         Route::get('create', 'SanPhamController@create')->name('sanpham.create');
         Route::post('store', 'SanPhamController@store')->name('sanpham.store');
+    });
+
+    Route::group(['prefix' => 'hoadon'], function () {
+        Route::get('index', 'HoaDonXuatController@index')->name('hoadon.index');
+        Route::get('fetch', 'HoaDonXuatController@fetch')->name('hoadon.fetch');
+        Route::get('create', 'HoaDonXuatController@create')->name('hoadon.create');
+        Route::post('store', 'HoaDonXuatController@store')->name('hoadon.store');
     });
 });
