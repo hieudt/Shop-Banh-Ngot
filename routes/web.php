@@ -1,4 +1,5 @@
 <?php
+use Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@
 
 Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/show/{id}', 'HomeController@fetchProduct')->name('home.showproduct');
+Route::get('/cart', 'HomeController@cart')->name('cart.show');
+Route::post('/cart/add', 'HomeController@cartAdd')->name('cart.add');
+Route::get('/cart/show', function () {
+    dd(Cart::content());
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('index', function () {

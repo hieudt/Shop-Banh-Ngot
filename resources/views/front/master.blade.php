@@ -10,7 +10,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('front/css/open-iconic-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('front/css/animate.css') }}">
 
@@ -56,7 +56,14 @@
     <script src="{{ asset('front/js/jquery.animateNumber.min.js') }}"></script>
     <script src="{{ asset('front/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('front/js/scrollax.min.js') }}"></script>
+    <script src="{{ asset('admin/js/jquery-ui.min.js')}}"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>
+    <script src="{{ asset('front/js/homepage.js') }}"></script>
+    <script>
+        $(document).homepage({
+            cartAddUrl : '{{ route('cart.add') }}',
+        })
+    </script>
 
 </body>
 
