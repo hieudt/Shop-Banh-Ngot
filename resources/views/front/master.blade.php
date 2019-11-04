@@ -58,10 +58,12 @@
     <script src="{{ asset('front/js/scrollax.min.js') }}"></script>
     <script src="{{ asset('admin/js/jquery-ui.min.js')}}"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>
-    <script src="{{ asset('front/js/homepage.js') }}"></script>
+    <script src=" {{ asset('front/js/homepage.js') }}"></script>
     <script>
         $(document).homepage({
             cartAddUrl : '{{ route('cart.add') }}',
+            cartUpdateUrl : '{{ route('cart.update') }}',
+            cartCheckoutUrl: '{{ route('cart.checkout') }}',
         })
     </script>
 

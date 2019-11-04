@@ -3,6 +3,9 @@
 <section class="ftco-section">
     <div class="container">
         <div class="row">
+            <div id="notif"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate">
                 <a href="{{ asset($SP->images) }}" class="image-popup"><img src="{{ asset($SP->image) }}"
                         class="img-fluid" alt="Colorlib Template"></a>

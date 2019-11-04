@@ -1,6 +1,8 @@
 $.widget("app.homepage", {
     options: {
         cartAddUrl: '',
+        cartUpdateUrl: '',
+        cartCheckoutUrl: '',
     },
     _create: function () {
         var opt = this.options;
@@ -40,6 +42,29 @@ $.widget("app.homepage", {
             }
             self._formPost(data, opt.cartAddUrl)
         })
+
+        $('#updateCart').on('click', function() {
+            location.reload()
+        })
+
+        $('.quantity').on('blur', function (){
+            const data = {
+                number: $(this).val(),
+                rowId: $(this).parent().find('.row-id').val(),
+            }
+            self._updateCart(data, opt.cartUpdateUrl)
+        })
+
+        $('#checkoutButton').on('click', function() {
+            const data = {
+                sdt_kh: $('#sdt').val(),
+                ho_tenkh: $('#hoten').val(),
+                diachi_ship: $('#address').val(),
+                chuthich: $('#chuthich').val(),
+            }
+
+            self._checkout(data, opt.cartCheckoutUrl)
+        })
     },
     _formValidate: function () {
         if ($('#ctForm').length > 0) {
@@ -72,10 +97,55 @@ $.widget("app.homepage", {
             data: dataString,
             success: function (data) {
                 console.log(data);
+                rogAlert("success", data.success);
             },
             error: function (request, status) {
                 $.each(request.responseJSON.errors, function (key, val) {
                     console.log(val);
+                    rogAlert("danger", val);
+                });
+            }
+        });
+    },
+    _updateCart: function (data, url) {
+        var dataString = "number=" + data.number + "&rowId=" + data.rowId;
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'POST',
+            url: url,
+            data: dataString,
+            success: function (data) {
+                console.log(data);
+                rogAlert("success", data.success);
+            },
+            error: function (request, status) {
+                $.each(request.responseJSON.errors, function (key, val) {
+                    console.log(val);
+                    rogAlert("danger", val);
+                });
+            }
+        });
+    },
+
+    _checkout: function (data, url) {
+        var dataString = "sdt_kh=" + data.sdt_kh + "&ho_tenkh=" + data.ho_tenkh + "&diachi_ship=" + data.diachi_ship + "&chuthich=" + data.chuthich 
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'POST',
+            url: url,
+            data: dataString,
+            success: function (data) {
+                console.log(data);
+                rogAlert("success", data.success);
+            },
+            error: function (request, status) {
+                $.each(request.responseJSON.errors, function (key, val) {
+                    console.log(val);
+                    rogAlert("danger", val);
                 });
             }
         });

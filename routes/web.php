@@ -1,5 +1,4 @@
 <?php
-use Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +15,10 @@ Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/show/{id}', 'HomeController@fetchProduct')->name('home.showproduct');
 Route::get('/cart', 'HomeController@cart')->name('cart.show');
 Route::post('/cart/add', 'HomeController@cartAdd')->name('cart.add');
-Route::get('/cart/show', function () {
-    dd(Cart::content());
-});
+Route::post('/cart/update', 'HomeController@updateNumber')->name('cart.update');
+Route::post('/cart/checkout', 'HomeController@cartCheckout')->name('cart.checkout');
+
+
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('index', function () {
@@ -57,5 +57,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('fetch', 'HoaDonXuatController@fetch')->name('hoadon.fetch');
         Route::get('create', 'HoaDonXuatController@create')->name('hoadon.create');
         Route::post('store', 'HoaDonXuatController@store')->name('hoadon.store');
+        Route::get('show/{id}', 'HoaDonXuatController@show')->name('hoadon.show');
+        Route::get('print/{id}', 'HoaDonXuatController@print')->name('hoadon.print');
     });
 });

@@ -13,13 +13,51 @@ class HoaDonXuatController extends Controller
         return view('manage.hoadonxuat.index');
     }
 
+    public function show($id) {
+        $HD = HoaDonXuat::find($id);
+
+        return view('manage.hoadonxuat.show')->with(compact('HD'));
+    }
+
+    public function print($id) {
+        $HD = HoaDonXuat::find($id);
+
+        return view('manage.hoadonxuat.print')->with(compact('HD'));
+    }
+
     public function fetch()
     {
         return Datatables::of(HoaDonXuat::all())
-        ->addColumn('action', function ($data) {
-            return '<button class="btn btn-primary" data-id="'.$data->id.'"><i class="fa fa-fw fa-edit"></i>Sửa </button>&nbsp<button class="btn btn-danger delete" data-id="'.$data->id.'"><i class="fa fa-fw fa-trash-o"></i>Xóa </button>';
+        ->editColumn('status', function($data) {
+            $label = "";
+            $name = "";
+
+            if ($data->status == 0) {
+                $label = "danger";
+                $name = "Chờ xử lý";
+            }
+
+            if ($data->status == 1) {
+                $label = "primary";
+                $name = "Đã xử lý";
+            }
+
+            if ($data->status == 2) {
+                $label = "success";
+                $name = "Đã giao";
+            }
+
+            if ($data->status == 3) {
+                $label = "dark";
+                $name = "Đã hủy";
+            }
+
+            return "<span class='label label-{$label}'> {$name} </span>";
         })
-        ->rawColumns(['action'])
+        ->addColumn('action', function ($data) {
+            return '<a href="'.route('hoadon.show', ['id' => $data->id]).'" class="btn btn-primary" data-id="'.$data->id.'"><i class="fa fa-fw fa-edit"></i>Sửa </a>&nbsp<button class="btn btn-danger delete" data-id="'.$data->id.'"><i class="fa fa-fw fa-trash-o"></i>Xóa </button>';
+        })
+        ->rawColumns(['action','status'])
         ->make(true);
     }
 }

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12 ftco-animate">
                 <div class="cart-list">
-                    <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Cập Nhật Giỏ Hàng</a></p>
+                    <p><a href="javascript:void(0)" id="updateCart" class="btn btn-primary py-3 px-4">Cập Nhật Giỏ Hàng</a></p>
                     <table class="table">
                         <thead class="thead-primary">
                             <tr class="text-center">
@@ -28,6 +28,7 @@
 
                                 <td class="product-name">
                                     <h3>{{ $item->name }}</h3>
+                                    
                                 </td>
 
                                 <td class=" price">{{ $item->price }} VND
@@ -37,6 +38,7 @@
                                     <div class="input-group mb-3">
                                         <input type="text" name="quantity" class="quantity form-control input-number"
                                             value="{{ $item->qty }}" min="1" max="100">
+                                        <input type="hidden" class="row-id" value="{{ $item->rowId }}">
                                     </div>
                                 </td>
 
@@ -55,19 +57,19 @@
                     <form action="#" class="info">
                         <div class="form-group">
                             <label for="">SĐT</label>
-                            <input type="text" class="form-control text-left px-3" placeholder="">
+                            <input type="text" id="sdt" class="form-control text-left px-3" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="country">Họ Tên KH</label>
-                            <input type="text" class="form-control text-left px-3" placeholder="">
+                            <input type="text" id="hoten" class="form-control text-left px-3" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="country">Địa chỉ giao hàng</label>
-                            <input type="text" class="form-control text-left px-3" placeholder="">
+                            <input type="text" id="address" class="form-control text-left px-3" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="">Chú thích</label>
-                            <textarea class="form-control" name="" id="" rows="3"></textarea>
+                            <textarea class="form-control" id="chuthich" name="" id="" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
@@ -84,7 +86,7 @@
                         <span>Ship COD</span>
                     </p>
                 </div>
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Tiến hành thanh toán</a></p>
+                <p><a href="javascript:void(0)" id="checkoutButton"  class="btn btn-primary py-3 px-4">Tiến hành thanh toán</a></p>
             </div>
         </div>
     </div>
