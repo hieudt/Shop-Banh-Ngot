@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\HoaDonXuat;
+use App\Comment;
 
 class HoaDonXuatController extends Controller
 {
@@ -59,5 +60,15 @@ class HoaDonXuatController extends Controller
         })
         ->rawColumns(['action','status'])
         ->make(true);
+    }
+
+    public function comment(Request $req)
+    {
+        $cm = new Comment;
+        $cm->id_hdx = $req->id_hdx;
+        $cm->messages = strip_tags($req->messages);
+        $cm->save();
+
+        return response()->json(['success' => 'Ok'], 200);
     }
 }

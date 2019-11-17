@@ -145,15 +145,16 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body pad">
-        <form>
+        <input type="hidden" id="id_hdx" value="{{$HD->id}}">
         <textarea class="textarea" id="editor1" placeholder="Place some text here"
-            tyle="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-        <button class="btn btn-primary">Gửi</button>
-        </form>
+            tyle="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea><br/>
+        <button class="btn btn-primary" id="comment">Gửi</button>
     </div>
-    <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-        Ship COD
+    @foreach($HD->comments as $cm)
+        <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+        {{$cm->messages}}
         </p>
+    @endforeach
 </section>
 
 @endsection
@@ -167,6 +168,7 @@
 <script>
     $(document).hoadon({
         fetchUrl : '{{route('hoadon.fetch')}}', 
+        commentUrl : '{{route('hoadon.comment')}}',
     })
 </script>
 <script>

@@ -59,5 +59,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('store', 'HoaDonXuatController@store')->name('hoadon.store');
         Route::get('show/{id}', 'HoaDonXuatController@show')->name('hoadon.show');
         Route::get('print/{id}', 'HoaDonXuatController@print')->name('hoadon.print');
+        Route::post('comment', 'HoaDonXuatController@comment')->name('hoadon.comment');
     });
 });

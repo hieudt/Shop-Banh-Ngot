@@ -2,6 +2,7 @@ $.widget("app.hoadon", {
     options: {
         fetchUrl: '',
         postUrl: '',
+        commentUrl: '',
     },
     _create: function () {
         var opt = this.options;
@@ -17,6 +18,15 @@ $.widget("app.hoadon", {
             if ($(this).valid()) {
                 self._formPost(this, event, opt.postUrl)
             }
+        })
+
+        $('#comment').click(function () {
+            const data = {
+                id : $('#id_hdx').val(),
+                messages : $('#editor1').val(),
+            }
+
+            self._comment(data, opt.commentUrl);
         })
     },
     _fetch: function (fetchUrl, idElement) {
@@ -56,6 +66,26 @@ $.widget("app.hoadon", {
                 console.log(data)
                 $('.alert').show();
             },
+        })
+    },
+    _comment: function (data, posturl) {
+        var dataString = "id_hdx=" + data.id + "&messages=" + CKEDITOR.instances.editor1.getData();
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'POST',
+            url: posturl,
+            data: dataString,
+            success: function (data) {
+                console.log(data);
+                location.reload();
+            },
+            error: function (request, status) {
+                $.each(request.responseJSON.errors, function (key, val) {
+                    console.log(val);
+                });
+            }
         })
     }
 });
