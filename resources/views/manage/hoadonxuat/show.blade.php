@@ -13,14 +13,19 @@
 </section>
 
 <div class="pad margin no-print">
+    <div class="alert alert-success alert-block" style="display:none;">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Cập nhật thành công</strong>
+    </div>
     <div class="callout callout-info" style="margin-bottom: 0!important;">
     <h4><i class="fa fa-info"></i> Update Trạng thái:</h4>
     <div class="form-group">
       <label for=""></label>
-      <select class="form-control" name="" id="">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+      <select class="form-control selStatus" name="selStatus" id="selStatus">
+        <option value="0">Chờ xử lý</option>
+        <option value="1">Đã xử lý</option>
+        <option value="2">Đã giao</option>
+        <option value="3">Đã hủy</option>
       </select>
     </div>
 </div>
@@ -116,10 +121,7 @@
     <div class="row no-print">
     <div class="col-xs-12">
         <a href="{{ route('hoadon.print', ['id'=>$HD->id]) }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-        <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
-        </button>
-        <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-        <i class="fa fa-download"></i> Generate PDF
+        <button type="button" id="updateStatus" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Cập Nhật
         </button>
     </div>
     </div>
@@ -169,6 +171,7 @@
     $(document).hoadon({
         fetchUrl : '{{route('hoadon.fetch')}}', 
         commentUrl : '{{route('hoadon.comment')}}',
+        updateUrl: '{{route('hoadon.update')}}',
     })
 </script>
 <script>

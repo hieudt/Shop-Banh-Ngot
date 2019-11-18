@@ -17,13 +17,16 @@ Route::get('/cart', 'HomeController@cart')->name('cart.show');
 Route::post('/cart/add', 'HomeController@cartAdd')->name('cart.add');
 Route::post('/cart/update', 'HomeController@updateNumber')->name('cart.update');
 Route::post('/cart/checkout', 'HomeController@cartCheckout')->name('cart.checkout');
-
+Route::get('/cart/success', function () {
+    return view('front.home.cartsuccess');
+})->name('home.success');
+Route::get('/shop', 'HomeController@shop')->name('home.shop');
 
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('index', function () {
         return view('manage.home');
-    });
+    })->name('admin.home');
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('index', 'UserController@index')->name('users.index');
@@ -60,5 +63,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('show/{id}', 'HoaDonXuatController@show')->name('hoadon.show');
         Route::get('print/{id}', 'HoaDonXuatController@print')->name('hoadon.print');
         Route::post('comment', 'HoaDonXuatController@comment')->name('hoadon.comment');
+        Route::post('update', 'HoaDonXuatController@update')->name('hoadon.update');
     });
 });

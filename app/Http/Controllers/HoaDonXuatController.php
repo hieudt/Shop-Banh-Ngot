@@ -71,4 +71,13 @@ class HoaDonXuatController extends Controller
 
         return response()->json(['success' => 'Ok'], 200);
     }
+
+    public function update(Request $req)
+    {
+        $hd = HoaDonXuat::find($req->id);
+        $hd->status = $req->status;
+        $hd->save();
+
+        return response()->json(['success' => 'Ok'], 200);
+    }
 }

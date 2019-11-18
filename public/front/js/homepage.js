@@ -141,6 +141,7 @@ $.widget("app.homepage", {
             success: function (data) {
                 console.log(data);
                 rogAlert("success", data.success);
+                window.location = data.data
             },
             error: function (request, status) {
                 $.each(request.responseJSON.errors, function (key, val) {

@@ -114,7 +114,13 @@ class HomeController extends Controller
             
             
 
-            return response()->json(['success' => 'Thanh toan hoa don thanh cong'], 200);
+            return response()->json(['success' => 'Thanh toan hoa don thanh cong', 'data' => route('home.success')], 200);
         }
+    }
+
+    public function shop()
+    {
+        $SP = SanPham::all();
+        return view('front.home.shop')->with(compact('SP'));
     }
 }

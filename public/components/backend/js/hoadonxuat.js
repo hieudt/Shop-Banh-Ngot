@@ -3,6 +3,7 @@ $.widget("app.hoadon", {
         fetchUrl: '',
         postUrl: '',
         commentUrl: '',
+        updateUrl: '',
     },
     _create: function () {
         var opt = this.options;
@@ -27,6 +28,26 @@ $.widget("app.hoadon", {
             }
 
             self._comment(data, opt.commentUrl);
+        })
+
+        $('#updateStatus').click(function () {
+            const data = {
+                status: $('#selStatus').val(),
+                id : $('#id_hdx').val(),
+            }
+            var dataString = "status="+data.status+"&id="+data.id;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: opt.updateUrl,
+                method: "POST",
+                data: dataString,
+                success: function (data) {
+                    console.log(data)
+                    $('.alert').show()
+                },
+            })
         })
     },
     _fetch: function (fetchUrl, idElement) {
