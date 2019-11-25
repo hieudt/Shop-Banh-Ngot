@@ -39,6 +39,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="{{ route('hoadon.index') }}"><i class="fa fa-circle-o"></i>Hóa Đơn Xuất</a></li>
+          <li><a href="{{ route('hoadonnhap.index') }}"><i class="fa fa-circle-o"></i>Hóa Đơn Nhập</a></li>
         </ul>
       </li>
     </ul>

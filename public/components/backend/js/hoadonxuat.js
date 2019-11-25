@@ -52,7 +52,7 @@ $.widget("app.hoadon", {
     },
     _fetch: function (fetchUrl, idElement) {
         const data = [
-            { data: 'id', name: 'id' },
+            { data: 'sdt_kh', name: 'sdt_kh' },
             { data: 'created_at', name: 'created_at' },
             { data: 'tongtien', name: 'tongtien' },
             { data: 'status', name: 'status' },

@@ -65,4 +65,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('comment', 'HoaDonXuatController@comment')->name('hoadon.comment');
         Route::post('update', 'HoaDonXuatController@update')->name('hoadon.update');
     });
+
+    
+    Route::group(['prefix' => 'hoadonnhap'], function() {
+        Route::get('index', 'HoaDonNhapController@index')->name('hoadonnhap.index');
+        Route::get('fetch', 'HoaDonNhapController@fetch')->name('hoadonnhap.fetch');
+        Route::get('show/{id}', 'HoaDonNhapController@show')->name('hoadonnhap.show');
+        Route::post('store', 'HoaDonNhapController@store')->name('hoadonnhap.store');
+        Route::get('create', 'HoaDonNhapController@create')->name('hoadonnhap.create');
+    });
+    
 });
