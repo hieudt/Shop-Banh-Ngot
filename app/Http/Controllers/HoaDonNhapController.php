@@ -28,7 +28,7 @@ class HoaDonNhapController extends Controller
             return $tongtien;
         })
         ->addColumn('action', function ($data) {
-            return '<a href="'.route('hoadon.show', ['id' => $data->id]).'" class="btn btn-primary" data-id="'.$data->id.'"><i class="fa fa-fw fa-eye"></i>Xem </a>';
+            return '<a href="'.route('hoadonnhap.show', ['id' => $data->id]).'" class="btn btn-primary" data-id="'.$data->id.'"><i class="fa fa-fw fa-eye"></i>Xem </a>';
         })
         ->rawColumns(['action', 'tongtien'])
         ->make(true);
@@ -66,6 +66,18 @@ class HoaDonNhapController extends Controller
 
             throw $e;
         }
+    }
+
+    public function show($id) {
+        $HD = HoaDonNhap::find($id);
+
+        return view('manage.hoadonnhap.show')->with(compact('HD'));
+    }
+
+    public function print($id) {
+        $HD = HoaDonNhap::find($id);
+
+        return view('manage.hoadonnhap.print')->with(compact('HD'));
     }
 
 }

@@ -24,9 +24,7 @@ Route::get('/shop', 'HomeController@shop')->name('home.shop');
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('index', function () {
-        return view('manage.home');
-    })->name('admin.home');
+    Route::get('index', 'AdminController@index')->name('admin.home');
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('index', 'UserController@index')->name('users.index');
@@ -46,6 +44,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('fetch', 'CongThucController@fetch')->name('congthuc.fetch');
         Route::get('create', 'CongThucController@create')->name('congthuc.create');
         Route::post('store', 'CongThucController@store')->name('congthuc.store');
+    });
+
+    Route::group(['prefix' => 'daily'], function () {
+        Route::get('index', 'DaiLyController@index')->name('daily.index');
+        Route::get('fetch', 'DaiLyController@fetch')->name('daily.fetch');
+        Route::get('create', 'DaiLyController@create')->name('daily.create');
+        Route::post('store', 'DaiLyController@store')->name('daily.store');
     });
 
     Route::group(['prefix' => 'sanpham'], function () {
@@ -73,6 +78,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('show/{id}', 'HoaDonNhapController@show')->name('hoadonnhap.show');
         Route::post('store', 'HoaDonNhapController@store')->name('hoadonnhap.store');
         Route::get('create', 'HoaDonNhapController@create')->name('hoadonnhap.create');
+        Route::get('print/{id}', 'HoaDonNhapController@print')->name('hoadonnhap.print');
     });
     
 });

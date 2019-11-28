@@ -21,7 +21,6 @@
                                 <th>Đơn vị</th>
                                 <th>Số lượng</th>
                                 <th>Đơn giá</th>
-                                <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>

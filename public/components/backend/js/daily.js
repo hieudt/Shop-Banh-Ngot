@@ -1,4 +1,4 @@
-$.widget("app.congthuc", {
+$.widget("app.daily", {
     options: {
         fetchUrl: '',
         postUrl: '',
@@ -21,9 +21,10 @@ $.widget("app.congthuc", {
     },
     _fetch: function (fetchUrl, idElement) {
         const data = [
-            { data: 'id_sanpham', name: 'id_sanpham' },
-            { data: 'id_nguyenlieu', name: 'id_nguyenlieu' },
-            { data: 'soluong', name: 'soluong' },
+            { data: 'id', name: 'id' },
+            { data: 'ten_dai_ly', name: 'ten_dai_ly' },
+            { data: 'so_dien_thoai', name: 'so_dien_thoai' },
+            { data: 'dia_chi', name: 'dia_chi' },
 
         ]
         db(fetchUrl, idElement, data);
@@ -32,18 +33,28 @@ $.widget("app.congthuc", {
         if ($('#ctForm').length > 0) {
             $('#ctForm').validate({
                 rules: {
-                    soluong: {
+                    ten_dai_ly: {
+                        required: true,
+                    },
+                    so_dien_thoai: {
                         required: true,
                         number: true,
-                        min: 0,
                     },
+                    dia_chi: {
+                        required: true,
+                    }
                 },
                 messages: {
-                    soluong: {
-                        required: "Thiếu số lượng nguyên liệu",
-                        number: "Số lượng nguyên liệu phải là số",
-                        min: "Số lượng phải lớn hơn 0"
+                    ten_dai_ly: {
+                        required: "Vui lòng nhập tên đại lý",
                     },
+                    so_dien_thoai: {
+                        required: "Vui lòng nhập số điện thoại của đại lý",
+                        number: "Số điện thoại phải là số"
+                    },
+                    dia_chi: {
+                        required: "Vui lòng nhập địa chỉ đại lý",
+                    }
                 },
             })
         }

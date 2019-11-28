@@ -26,7 +26,6 @@ $.widget("app.nguyenlieu", {
             { data: 'donvi', name: 'donvi' },
             { data: 'soluong', name: 'soluong' },
             { data: 'dongia', name: 'dongia' },
-            { data: 'action', name: 'action' }
         ]
         db(fetchUrl, idElement, data);
     },

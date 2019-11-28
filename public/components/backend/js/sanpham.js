@@ -24,7 +24,6 @@ $.widget("app.sanpham", {
             { data: 'ten', name: 'ten' },
             { data: 'image', name: 'image' },
             { data: 'giaban', name: 'giaban' },
-            { data: 'action', name: 'action' },
 
         ]
         db(fetchUrl, idElement, data);

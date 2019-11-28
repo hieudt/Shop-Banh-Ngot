@@ -19,7 +19,6 @@
                                 <th>Tên SP</th>
                                 <th>Hình ảnh</th>
                                 <th>Giá bán</th>
-                                <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
