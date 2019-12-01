@@ -183,7 +183,7 @@
                                 </span>
                             </div>
                             <div class="text text-center">
-                                <p class="mb-5 pl-4 line">Bánh ngon vãi ***.</p>
+                                <p class="mb-5 pl-4 line">Bánh ngon.</p>
                                 <p class="name">Hieu Duong</p>
                                 <span class="position">Developer Manager</span>
                             </div>
