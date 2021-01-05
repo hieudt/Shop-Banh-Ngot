@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "admin-lte": "^2.4.18",
-        "axios": "^0.19",
+        "axios": "^0.21",
         "bootstrap-sass": "^3.4.1",
         "cross-env": "^5.1",
         "fastclick": "^1.0.6",
